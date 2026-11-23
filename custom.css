@@ -277,3 +277,45 @@
   .contact-title { font-size: 12vw !important; }
   .contact-footer { margin-top: 52px !important; gap: 18px !important; }
 }
+
+/* ===== 手机端「职业轨迹」布局修复（375px 等窄屏） ===== */
+@media (max-width: 760px) {
+  /* 卡片从 4 列桌面网格改为：圆点 + 通栏内容 */
+  .timeline-item {
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    align-items: start !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .timeline-item > .timeline-meta {
+    grid-area: auto !important;
+    grid-column: 1 !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+  .timeline-item > .timeline-content {
+    grid-area: auto !important;
+    grid-column: 2 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    padding: 20px 18px !important;
+    display: block !important;
+  }
+  /* 隐藏桌面版的连接线圆点装饰 */
+  .timeline-content::before,
+  .timeline-content::after { display: none !important; }
+  /* 文字占满卡片宽度，避免竖排断行 */
+  .timeline-role,
+  .timeline-role h3,
+  .timeline-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .timeline-copy { margin-top: 12px !important; }
+  /* 窄屏隐藏箭头，避免挤压 */
+  .timeline-arrow { display: none !important; }
+  /* 锚点跳转时给粘性导航留出高度，避免标题被遮挡 */
+  section { scroll-margin-top: 76px; }
+}
